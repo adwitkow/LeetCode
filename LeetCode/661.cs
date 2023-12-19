@@ -60,13 +60,13 @@ namespace LeetCode
         [TestCase("[[1,1,1],[1,0,1],[1,1,1]]", "[[0,0,0],[0,0,0],[0,0,0]]")]
         [TestCase("[[100,200,100],[200,50,200],[100,200,100]]", "[[137,141,137],[141,138,141],[137,141,137]]")]
         [TestCase("[[2,3,4],[5,6,7],[8,9,10],[11,12,13],[14,15,16]]", "[[4,4,5],[5,6,6],[8,9,9],[11,12,12],[13,13,14]]")]
-        public void Test(string input, string expected)
+        public void Test(string input, string expectedSerialized)
         {
             var numbers = JsonSerializer.Deserialize<int[][]>(input);
             var result = ImageSmoother(numbers);
 
-            var expectedDeserialized = JsonSerializer.Deserialize<int[][]>(expected);
-            Assert.That(result, Is.EqualTo(expectedDeserialized));
+            var expected = JsonSerializer.Deserialize<int[][]>(expectedSerialized);
+            Assert.That(result, Is.EqualTo(expected));
         }
     }
 }
