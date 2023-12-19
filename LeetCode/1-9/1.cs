@@ -1,7 +1,7 @@
 ﻿using System.Text.Json;
 using NUnit.Framework;
 
-namespace LeetCode
+namespace LeetCode._1_9
 {
     internal class _1
     {

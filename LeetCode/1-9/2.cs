@@ -2,7 +2,7 @@
 using System.Text.Json;
 using NUnit.Framework;
 
-namespace LeetCode
+namespace LeetCode._1_9
 {
     public class _2
     {
