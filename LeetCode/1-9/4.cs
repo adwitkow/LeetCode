@@ -3,9 +3,9 @@ using NUnit.Framework;
 
 namespace LeetCode._1_9
 {
+    // https://leetcode.com/problems/median-of-two-sorted-arrays/
     internal class _4
     {
-        // https://leetcode.com/problems/median-of-two-sorted-arrays/
         public double FindMedianSortedArrays(int[] nums1, int[] nums2)
         {
             // naive approach

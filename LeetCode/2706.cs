@@ -3,9 +3,9 @@ using NUnit.Framework;
 
 namespace LeetCode
 {
+    // https://leetcode.com/problems/buy-two-chocolates/
     internal class _2706
     {
-        // https://leetcode.com/problems/buy-two-chocolates/
         public int BuyChoco(int[] prices, int money)
         {
             Array.Sort(prices);

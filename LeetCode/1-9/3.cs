@@ -2,6 +2,7 @@
 
 namespace LeetCode._1_9
 {
+    // https://leetcode.com/problems/longest-substring-without-repeating-characters/
     internal class _3
     {
         public int LengthOfLongestSubstring(string s)

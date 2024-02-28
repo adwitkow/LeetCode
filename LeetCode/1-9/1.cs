@@ -3,9 +3,9 @@ using NUnit.Framework;
 
 namespace LeetCode._1_9
 {
+    // https://leetcode.com/problems/two-sum/
     internal class _1
     {
-        // https://leetcode.com/problems/two-sum/
         public int[] TwoSum(int[] nums, int target)
         {
             var keys = Enumerable.Range(0, nums.Length).ToArray();

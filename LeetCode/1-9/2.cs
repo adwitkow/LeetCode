@@ -4,9 +4,9 @@ using NUnit.Framework;
 
 namespace LeetCode._1_9
 {
+    // https://leetcode.com/problems/add-two-numbers/
     public class _2
     {
-        // https://leetcode.com/problems/add-two-numbers/
         public ListNode AddTwoNumbers(ListNode l1, ListNode l2)
         {
             int carry = 0;
