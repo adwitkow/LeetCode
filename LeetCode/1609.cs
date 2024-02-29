@@ -8,77 +8,61 @@ namespace LeetCode
     {
         public bool IsEvenOddTree(TreeNode root)
         {
-            var level = 0;
-            var currentNodes = new TreeNode[]
-            {
-                root
-            };
+            var level = -1;
+            var nodes = new Queue<TreeNode>();
+            nodes.Enqueue(root);
 
-            List<TreeNode> nextNodes;
-            while (currentNodes.Any(node => node is not null))
+            while (nodes.Any())
             {
-                nextNodes = new List<TreeNode>();
-                // level even: nodes odd,  increasing
-                // level odd:  nodes even, decreasing
+                level++;
                 var levelEven = level % 2 == 0;
 
-                var firstNode = currentNodes[0];
-                if (firstNode.left is not null)
+                var previousValue = 0;
+
+                var nodeCount = nodes.Count;
+                for (int i = 0; i < nodeCount; i++)
                 {
-                    nextNodes.Add(firstNode.left);
-                }
+                    var node = nodes.Dequeue();
 
-                if (firstNode.right is not null)
-                {
-                    nextNodes.Add(firstNode.right);
-                }
-
-                var previousValue = firstNode.val;
-
-                if (currentNodes.Length == 1)
-                {
-                    var nodeEven = previousValue % 2 == 0;
-                    var isEvenOdd = (levelEven && !nodeEven)
-                            || (!levelEven && nodeEven);
-
-                    if (!isEvenOdd)
+                    if (i == 0)
                     {
-                        return false;
-                    }
-                }
-                else
-                {
-                    for (int i = 1; i < currentNodes.Length; i++)
-                    {
-                        var node = currentNodes[i];
-                        var currentValue = node.val;
-                        var nodeEven = currentValue % 2 == 0;
+                        var nodeEven = node.val % 2 == 0;
+                        var isEvenOdd = (levelEven && !nodeEven)
+                                || (!levelEven && nodeEven);
 
-                        var isEvenOdd = (levelEven && !nodeEven && currentValue > previousValue)
-                            || (!levelEven && nodeEven && currentValue < previousValue);
-                        
                         if (!isEvenOdd)
                         {
                             return false;
                         }
 
                         previousValue = node.val;
+                    }
+                    else
+                    {
+                        var currentValue = node.val;
+                        var nodeEven = currentValue % 2 == 0;
 
-                        if (node.left is not null)
+                        var isEvenOdd = (levelEven && !nodeEven && currentValue > previousValue)
+                            || (!levelEven && nodeEven && currentValue < previousValue);
+
+                        if (!isEvenOdd)
                         {
-                            nextNodes.Add(node.left);
+                            return false;
                         }
 
-                        if (node.right is not null)
-                        {
-                            nextNodes.Add(node.right);
-                        }
+                        previousValue = node.val;
+                    }
+
+                    if (node.left is not null)
+                    {
+                        nodes.Enqueue(node.left);
+                    }
+
+                    if (node.right is not null)
+                    {
+                        nodes.Enqueue(node.right);
                     }
                 }
-
-                Array.Resize(ref currentNodes, nextNodes.Count);
-                nextNodes.CopyTo(currentNodes);
-                level++;
             }
 
             return true;
