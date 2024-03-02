@@ -9,7 +9,6 @@ namespace LeetCode
         public int[] SortedSquares(int[] nums)
         {
             // BETTER solution - very fast (thanks to .NET 8's LINQ)
-            // but not really memory-efficient:
             // return nums.Select(num => num * num).Order().ToArray();
 
             // Proper solution:
