@@ -3,12 +3,12 @@
 namespace LeetCode._1_9
 {
     // https://leetcode.com/problems/longest-substring-without-repeating-characters/
-    internal class _3
+    public class _3
     {
         public int LengthOfLongestSubstring(string s)
         {
-            var longest = "";
-            var candidate = "";
+            var longest = string.Empty;
+            var candidate = string.Empty;
 
             foreach (var ch in s)
             {

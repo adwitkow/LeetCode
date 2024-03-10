@@ -4,7 +4,7 @@ using NUnit.Framework;
 namespace LeetCode
 {
     // https://leetcode.com/problems/intersection-of-two-arrays
-    internal class _349
+    public class _349
     {
         public int[] Intersection(int[] nums1, int[] nums2)
         {

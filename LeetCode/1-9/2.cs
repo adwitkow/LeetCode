@@ -15,9 +15,10 @@ namespace LeetCode._1_9
             var currentNode = result;
             while (currentNode is not null)
             {
-                var value1 = GetValue(ref l1);
-                var value2 = GetValue(ref l2);
+                var value1 = GetValue(ref l1!);
+                var value2 = GetValue(ref l2!);
                 var sum = value1 + value2 + carry;
+
                 if (sum > 9)
                 {
                     carry = 1;
@@ -27,6 +28,7 @@ namespace LeetCode._1_9
                 {
                     carry = 0;
                 }
+
                 currentNode.val = sum;
 
                 if (l1 is not null || l2 is not null || carry > 0)
@@ -43,7 +45,7 @@ namespace LeetCode._1_9
             return result;
         }
 
-        private int GetValue(ref ListNode node)
+        private int GetValue(ref ListNode? node)
         {
             int result = 0;
             if (node is not null)
@@ -54,6 +56,9 @@ namespace LeetCode._1_9
 
             return result;
         }
+
+#pragma warning disable SA1202 // Elements should be ordered by access
+#pragma warning disable SA1204 // Static elements should appear before instance elements
 
         [Test]
         [TestCase("[2,4,3]", "[5,6,4]", "[7,0,8]")]
@@ -86,6 +91,7 @@ namespace LeetCode._1_9
 
                 current = current.next;
             }
+
             builder.Append(']');
 
             return builder.ToString();
@@ -93,7 +99,7 @@ namespace LeetCode._1_9
 
         public static ListNode StringToListNode(string input)
         {
-            var digits = JsonSerializer.Deserialize<int[]>(input);
+            var digits = JsonSerializer.Deserialize<int[]>(input)!;
 
             var result = new ListNode();
             var currentNode = result;
@@ -102,7 +108,7 @@ namespace LeetCode._1_9
                 var digit = digits[i];
 
                 currentNode.val = digit;
-                
+
                 if (i != digits.Length - 1)
                 {
                     var nextNode = new ListNode();
@@ -115,12 +121,16 @@ namespace LeetCode._1_9
         }
     }
 
+#pragma warning disable SA1307 // Accessible fields should begin with upper-case letter
+#pragma warning disable SA1401 // Fields should be private
+
     // Class provided by LeetCode (except for ToString)
     public class ListNode
     {
         public int val;
-        public ListNode next;
-        public ListNode(int val = 0, ListNode next = null)
+        public ListNode? next;
+
+        public ListNode(int val = 0, ListNode? next = null)
         {
             this.val = val;
             this.next = next;

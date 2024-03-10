@@ -4,7 +4,7 @@ using NUnit.Framework;
 namespace LeetCode._1_9
 {
     // https://leetcode.com/problems/median-of-two-sorted-arrays/
-    internal class _4
+    public class _4
     {
         public double FindMedianSortedArrays(int[] nums1, int[] nums2)
         {
@@ -35,8 +35,8 @@ namespace LeetCode._1_9
         [TestCase("[1,1,2]", "[3,4]", 2)]
         public void Test(string nums1Serialized, string nums2Serialized, double expected)
         {
-            var nums1 = JsonSerializer.Deserialize<int[]>(nums1Serialized);
-            var nums2 = JsonSerializer.Deserialize<int[]>(nums2Serialized);
+            var nums1 = JsonSerializer.Deserialize<int[]>(nums1Serialized)!;
+            var nums2 = JsonSerializer.Deserialize<int[]>(nums2Serialized)!;
             var result = FindMedianSortedArrays(nums1, nums2);
 
             Assert.That(result, Is.EqualTo(expected));

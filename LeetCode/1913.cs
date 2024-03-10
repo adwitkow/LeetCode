@@ -3,7 +3,7 @@
 namespace LeetCode
 {
     // https://leetcode.com/problems/maximum-product-difference-between-two-pairs/
-    internal class _1913
+    public class _1913
     {
         public int MaxProductDifference(int[] nums)
         {

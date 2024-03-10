@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace LeetCode._1_9
 {
     // https://leetcode.com/problems/zigzag-conversion/
-    internal class _6
+    public class _6
     {
         public string Convert(string s, int numRows)
         {

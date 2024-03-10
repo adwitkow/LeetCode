@@ -4,7 +4,7 @@ using NUnit.Framework;
 namespace LeetCode._1_9
 {
     // https://leetcode.com/problems/two-sum/
-    internal class _1
+    public class _1
     {
         public int[] TwoSum(int[] nums, int target)
         {
@@ -29,12 +29,12 @@ namespace LeetCode._1_9
 
                     if (sum == target)
                     {
-                        return new int[] { keys[i], keys[j] };
+                        return [keys[i], keys[j]];
                     }
                 }
             }
 
-            return new int[] { };
+            return [];
         }
 
         [Test]
@@ -44,7 +44,7 @@ namespace LeetCode._1_9
         [TestCase("[0,4,3,0]", 0, "[0,3]")]
         public void Test(string input, int target, string expectedSerialized)
         {
-            var numbers = JsonSerializer.Deserialize<int[]>(input);
+            var numbers = JsonSerializer.Deserialize<int[]>(input)!;
             var result = TwoSum(numbers, target);
 
             var expected = JsonSerializer.Deserialize<int[]>(expectedSerialized);

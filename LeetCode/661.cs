@@ -4,14 +4,16 @@ using NUnit.Framework;
 namespace LeetCode
 {
     // https://leetcode.com/problems/image-smoother/
-    internal class _661
+    public class _661
     {
-        public static int[,] Offsets = new int[,]
+#pragma warning disable SA1500 // Braces for multi-line statements should not share line
+        private static readonly int[,] Offsets = new int[,]
         {
-            { -1, -1 }, { -1 ,0 }, { -1, 1 },
-            { 0, -1 }, { 0, 0 }, { 0, 1 },
-            { 1, -1 }, { 1, 0 }, { 1, 1 }
+            { -1, -1 }, { -1, 0 }, { -1, 1 },
+            { 0, -1 },  { 0, 0 },  { 0, 1 },
+            { 1, -1 },  { 1, 0 },  { 1, 1 },
         };
+#pragma warning restore SA1500 // Braces for multi-line statements should not share line
 
         public int[][] ImageSmoother(int[][] img)
         {
@@ -46,7 +48,6 @@ namespace LeetCode
 
                         var current = img[offsetY][offsetX];
                         toFilter.Add(current);
-
                     }
 
                     smoothed[y][x] = (int)toFilter.Average();
@@ -62,7 +63,7 @@ namespace LeetCode
         [TestCase("[[2,3,4],[5,6,7],[8,9,10],[11,12,13],[14,15,16]]", "[[4,4,5],[5,6,6],[8,9,9],[11,12,12],[13,13,14]]")]
         public void Test(string input, string expectedSerialized)
         {
-            var numbers = JsonSerializer.Deserialize<int[][]>(input);
+            var numbers = JsonSerializer.Deserialize<int[][]>(input)!;
             var result = ImageSmoother(numbers);
 
             var expected = JsonSerializer.Deserialize<int[][]>(expectedSerialized);

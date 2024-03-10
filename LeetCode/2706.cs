@@ -4,7 +4,7 @@ using NUnit.Framework;
 namespace LeetCode
 {
     // https://leetcode.com/problems/buy-two-chocolates/
-    internal class _2706
+    public class _2706
     {
         public int BuyChoco(int[] prices, int money)
         {
@@ -24,7 +24,7 @@ namespace LeetCode
         [TestCase("[3,2,3]", 3, 3)]
         public void Test(string input, int money, int expected)
         {
-            var numbers = JsonSerializer.Deserialize<int[]>(input);
+            var numbers = JsonSerializer.Deserialize<int[]>(input)!;
             var result = BuyChoco(numbers, money);
 
             Assert.That(result, Is.EqualTo(expected));

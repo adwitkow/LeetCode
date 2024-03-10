@@ -3,17 +3,17 @@
 namespace LeetCode._1_9
 {
     // https://leetcode.com/problems/longest-palindromic-substring/
-    internal class _5
+    public class _5
     {
         // Not even suboptimal. Negatively optimal. Just horrible.
         // But it's quite readable, I guess.
         public string LongestPalindrome(string s)
         {
-            var current = "";
+            var current = string.Empty;
             var longest = current;
             for (int i = 0; i < s.Length; i++)
             {
-                current = "";
+                current = string.Empty;
                 for (int j = i; j < s.Length; j++)
                 {
                     current += s[j];

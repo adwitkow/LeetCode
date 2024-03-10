@@ -4,7 +4,7 @@ using NUnit.Framework;
 namespace LeetCode
 {
     // https://leetcode.com/problems/minimum-common-value/
-    internal class _2540
+    public class _2540
     {
         public int GetCommon(int[] nums1, int[] nums2)
         {

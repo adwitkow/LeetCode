@@ -4,7 +4,7 @@ using NUnit.Framework;
 namespace LeetCode
 {
     // https://leetcode.com/problems/even-odd-tree/
-    internal class _1609
+    public class _1609
     {
         public bool IsEvenOddTree(TreeNode root)
         {
@@ -12,7 +12,7 @@ namespace LeetCode
             var nodes = new Queue<TreeNode>();
             nodes.Enqueue(root);
 
-            while (nodes.Any())
+            while (nodes.Count != 0)
             {
                 level++;
                 var levelEven = level % 2 == 0;
@@ -128,12 +128,16 @@ namespace LeetCode
             return root;
         }
 
+#pragma warning disable SA1307 // Accessible fields should begin with upper-case letter
+#pragma warning disable SA1401 // Fields should be private
+
         // Class provided by LeetCode (except for ToString)
         public class TreeNode
         {
             public int val;
             public TreeNode? left;
             public TreeNode? right;
+
             public TreeNode(int val = 0, TreeNode? left = null, TreeNode? right = null)
             {
                 this.val = val;

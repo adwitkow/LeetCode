@@ -1,14 +1,11 @@
-﻿using System.Reflection;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 using NUnit.Framework;
 
 namespace LeetCode._1_9
 {
     // https://leetcode.com/problems/string-to-integer-atoi/
-    internal class _8
+    public partial class _8
     {
-        private static readonly Regex DigitRegex = new Regex(@"^( +)?(-|\+)?(\d+)");
-
         public int MyAtoi(string s)
         {
             // It's ugly and uses a LOT of memory
@@ -18,7 +15,8 @@ namespace LeetCode._1_9
             // but I don't exactly agree with the point of reinventing the wheel.
             //
             // At least it's quite easy to follow and debug.
-            var match = DigitRegex.Match(s);
+            var regex = DigitRegex();
+            var match = regex.Match(s);
             if (match.Success)
             {
                 var value = match.Groups[3].Value.TrimStart('0');
@@ -78,5 +76,8 @@ namespace LeetCode._1_9
             var result = MyAtoi(input);
             Assert.That(result, Is.EqualTo(expected));
         }
+
+        [GeneratedRegex(@"^( +)?(-|\+)?(\d+)")]
+        private static partial Regex DigitRegex();
     }
 }

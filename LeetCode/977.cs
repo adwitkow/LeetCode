@@ -4,7 +4,7 @@ using NUnit.Framework;
 namespace LeetCode
 {
     // https://leetcode.com/problems/squares-of-a-sorted-array/
-    internal class _977
+    public class _977
     {
         public int[] SortedSquares(int[] nums)
         {

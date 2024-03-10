@@ -3,7 +3,7 @@
 namespace LeetCode._1_9
 {
     // https://leetcode.com/problems/reverse-integer/
-    internal class _7
+    public class _7
     {
         public int Reverse(int x)
         {

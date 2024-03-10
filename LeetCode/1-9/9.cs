@@ -3,7 +3,7 @@
 namespace LeetCode._1_9
 {
     // https://leetcode.com/problems/palindrome-number/
-    internal class _9
+    public class _9
     {
         public bool IsPalindrome(int x)
         {
@@ -13,15 +13,16 @@ namespace LeetCode._1_9
             while (original > 0)
             {
                 var digit = original % 10;
-                reversed = reversed * 10 + digit;
-                original = original / 10;
+                reversed *= 10;
+                reversed += digit;
+                original /= 10;
             }
 
             if (reversed == x)
             {
                 return true;
             }
-            
+
             return false;
         }
 
@@ -41,13 +42,11 @@ namespace LeetCode._1_9
             return true;
         }
 
-
         public bool IsPalindrome_CharArray_Linq(int x)
         {
             var chars = x.ToString().ToCharArray();
             return chars.SequenceEqual(chars.Reverse());
         }
-
 
         [Test]
         [TestCase(121, true)]
