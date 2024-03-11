@@ -3,6 +3,7 @@ using LeetCode._1_9;
 
 namespace LeetCode.Benchmarks
 {
+    [MemoryDiagnoser]
     public class Benchmark9
     {
         [ParamsSource(nameof(ParamRange))]
