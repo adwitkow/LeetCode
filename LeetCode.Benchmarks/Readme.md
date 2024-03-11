@@ -1,3 +1,28 @@
+# 9. [Palindrome Number](https://leetcode.com/problems/palindrome-number/)
+| Method                             | Param       | Mean       | Error     | StdDev    | Gen0   | Allocated |
+|----------------------------------- |------------ |-----------:|----------:|----------:|-------:|----------:|
+| IsPalindrome                       | -2147483648 |  0.3274 ns | 0.0094 ns | 0.0083 ns |      - |         - |
+| IsPalindrome_CharArray_Linq        | -2147483648 | 46.9902 ns | 0.9513 ns | 1.5362 ns | 0.0214 |     224 B |
+| IsPalindrome_CharArray_SingleArray | -2147483648 | 12.6380 ns | 0.2690 ns | 0.2763 ns | 0.0092 |      96 B |
+| IsPalindrome                       | -123456     |  0.3155 ns | 0.0011 ns | 0.0009 ns |      - |         - |
+| IsPalindrome_CharArray_Linq        | -123456     | 43.7001 ns | 0.4117 ns | 0.3215 ns | 0.0191 |     200 B |
+| IsPalindrome_CharArray_SingleArray | -123456     | 10.7317 ns | 0.0737 ns | 0.0690 ns | 0.0076 |      80 B |
+| IsPalindrome                       | 0           |  0.3208 ns | 0.0022 ns | 0.0018 ns |      - |         - |
+| IsPalindrome_CharArray_Linq        | 0           | 39.9642 ns | 0.4566 ns | 0.3565 ns | 0.0138 |     144 B |
+| IsPalindrome_CharArray_SingleArray | 0           |  4.4074 ns | 0.0448 ns | 0.0374 ns | 0.0031 |      32 B |
+| IsPalindrome                       | 121         |  1.9648 ns | 0.0203 ns | 0.0190 ns |      - |         - |
+| IsPalindrome_CharArray_Linq        | 121         | 41.5092 ns | 0.5922 ns | 0.5249 ns | 0.0138 |     144 B |
+| IsPalindrome_CharArray_SingleArray | 121         |  5.6381 ns | 0.1277 ns | 0.1911 ns | 0.0031 |      32 B |
+| IsPalindrome                       | 123454321   |  7.9573 ns | 0.0245 ns | 0.0205 ns |      - |         - |
+| IsPalindrome_CharArray_Linq        | 123454321   | 56.2287 ns | 0.9274 ns | 0.8675 ns | 0.0206 |     216 B |
+| IsPalindrome_CharArray_SingleArray | 123454321   | 12.9704 ns | 0.1271 ns | 0.1062 ns | 0.0084 |      88 B |
+| IsPalindrome                       | 1234543210  |  9.2055 ns | 0.0125 ns | 0.0111 ns |      - |         - |
+| IsPalindrome_CharArray_Linq        | 1234543210  | 46.3424 ns | 0.9481 ns | 2.2532 ns | 0.0214 |     224 B |
+| IsPalindrome_CharArray_SingleArray | 1234543210  | 10.3764 ns | 0.1321 ns | 0.1171 ns | 0.0092 |      96 B |
+| IsPalindrome                       | 2147483647  |  9.2152 ns | 0.0305 ns | 0.0271 ns |      - |         - |
+| IsPalindrome_CharArray_Linq        | 2147483647  | 44.2088 ns | 0.3267 ns | 0.2896 ns | 0.0214 |     224 B |
+| IsPalindrome_CharArray_SingleArray | 2147483647  | 10.2686 ns | 0.0405 ns | 0.0339 ns | 0.0092 |      96 B |
+
 # 791. [Custom Sort String](https://leetcode.com/problems/custom-sort-string/)
 | Method                                   | Param                | Mean      | Error    | StdDev   | Gen0   | Allocated |
 |----------------------------------------- |--------------------- |----------:|---------:|---------:|-------:|----------:|
