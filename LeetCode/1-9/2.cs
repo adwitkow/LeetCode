@@ -1,5 +1,4 @@
-﻿using System.Text;
-using System.Text.Json;
+﻿using LeetCode.Scaffoldings;
 using NUnit.Framework;
 
 namespace LeetCode._1_9
@@ -58,87 +57,19 @@ namespace LeetCode._1_9
         }
 
 #pragma warning disable SA1202 // Elements should be ordered by access
-#pragma warning disable SA1204 // Static elements should appear before instance elements
-
         [Test]
         [TestCase("[2,4,3]", "[5,6,4]", "[7,0,8]")]
         [TestCase("[0]", "[0]", "[0]")]
         [TestCase("[9,9,9,9,9,9,9]", "[9,9,9,9]", "[8,9,9,9,0,0,0,1]")]
         public void Test(string l1Serialized, string l2Serialized, string expectedSerialized)
         {
-            var l1 = StringToListNode(l1Serialized);
-            var l2 = StringToListNode(l2Serialized);
+            var l1 = ListNode.FromString(l1Serialized);
+            var l2 = ListNode.FromString(l2Serialized);
 
             var result = AddTwoNumbers(l1, l2);
-            var resultSerialized = ListNodeToString(result);
+            var resultSerialized = ListNode.ToString(result);
 
             Assert.That(resultSerialized, Is.EqualTo(expectedSerialized));
-        }
-
-        public static string ListNodeToString(ListNode listNode)
-        {
-            var current = listNode;
-
-            var builder = new StringBuilder();
-            builder.Append('[');
-            while (current is not null)
-            {
-                builder.Append(current.val);
-                if (current.next is not null)
-                {
-                    builder.Append(',');
-                }
-
-                current = current.next;
-            }
-
-            builder.Append(']');
-
-            return builder.ToString();
-        }
-
-        public static ListNode StringToListNode(string input)
-        {
-            var digits = JsonSerializer.Deserialize<int[]>(input)!;
-
-            var result = new ListNode();
-            var currentNode = result;
-            for (int i = 0; i < digits.Length; i++)
-            {
-                var digit = digits[i];
-
-                currentNode.val = digit;
-
-                if (i != digits.Length - 1)
-                {
-                    var nextNode = new ListNode();
-                    currentNode.next = nextNode;
-                    currentNode = nextNode;
-                }
-            }
-
-            return result;
-        }
-    }
-
-#pragma warning disable SA1307 // Accessible fields should begin with upper-case letter
-#pragma warning disable SA1401 // Fields should be private
-
-    // Class provided by LeetCode (except for ToString)
-    public class ListNode
-    {
-        public int val;
-        public ListNode? next;
-
-        public ListNode(int val = 0, ListNode? next = null)
-        {
-            this.val = val;
-            this.next = next;
-        }
-
-        public override string ToString()
-        {
-            return _2.ListNodeToString(this);
         }
     }
 }
