@@ -2,7 +2,7 @@
 
 namespace LeetCode
 {
-    // https://leetcode.com/problems/find-the-pivot-integer/description/
+    // https://leetcode.com/problems/find-the-pivot-integer/
     public class _2485
     {
         public int PivotInteger(int n)
