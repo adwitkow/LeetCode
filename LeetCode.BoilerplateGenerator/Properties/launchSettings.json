@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "LeetCode.BoilerplateGenerator": {
+      "commandName": "Project",
+      "commandLineArgs": "C:\\Users\\Adam\\source\\repos\\LeetCode\\LeetCode"
+    }
+  }
+}
