@@ -8,10 +8,6 @@ namespace LeetCode
     {
         public int[] SortedSquares(int[] nums)
         {
-            // BETTER solution - very fast (thanks to .NET 8's LINQ)
-            // return nums.Select(num => num * num).Order().ToArray();
-
-            // Proper solution:
             var result = new int[nums.Length];
 
             var lastIndex = nums.Length - 1;
@@ -36,6 +32,11 @@ namespace LeetCode
             }
 
             return result;
+        }
+
+        public int[] SortedSquares_Linq(int[] nums)
+        {
+            return nums.Select(num => num * num).Order().ToArray();
         }
 
         [Test]

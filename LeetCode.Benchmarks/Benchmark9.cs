@@ -7,7 +7,7 @@ namespace LeetCode.Benchmarks
     public class Benchmark9
     {
         [ParamsSource(nameof(ParamRange))]
-        public int _param;
+        public int Param { get; set; }
 
         private _9 _sut = default!;
 
@@ -22,19 +22,19 @@ namespace LeetCode.Benchmarks
         [Benchmark]
         public bool IsPalindrome()
         {
-            return _sut.IsPalindrome(_param);
+            return _sut.IsPalindrome(Param);
         }
 
         [Benchmark]
         public bool IsPalindrome_CharArray_Linq()
         {
-            return _sut.IsPalindrome_CharArray_Linq(_param);
+            return _sut.IsPalindrome_CharArray_Linq(Param);
         }
 
         [Benchmark]
         public bool IsPalindrome_CharArray_SingleArray()
         {
-            return _sut.IsPalindrome_CharArray_SingleArray(_param);
+            return _sut.IsPalindrome_CharArray_SingleArray(Param);
         }
     }
 }

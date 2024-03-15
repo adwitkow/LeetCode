@@ -56,3 +56,23 @@
 | CustomSortString                         | (yxiuqmg, muygxiq)   | 182.26 ns | 0.504 ns | 0.447 ns | 0.0443 |     464 B |
 | CustomSortString_BruteSorter             | (yxiuqmg, muygxiq)   | 116.54 ns | 0.235 ns | 0.208 ns | 0.0076 |      80 B |
 | CustomSortString_BruteSorter_MappedOrder | (yxiuqmg, muygxiq)   | 149.28 ns | 0.980 ns | 0.818 ns | 0.0443 |     464 B |
+
+# 977. [Squares of a Sorted Array](https://leetcode.com/problems/squares-of-a-sorted-array/)
+| Method             | Param              | Mean         | Error      | StdDev     | Gen0   | Allocated |
+|------------------- |------------------- |-------------:|-----------:|-----------:|-------:|----------:|
+| SortedSquares      | 1 element          |     3.716 ns |  0.0188 ns |  0.0167 ns | 0.0031 |      32 B |
+| SortedSquares_Linq | 1 element          |    24.519 ns |  0.0612 ns |  0.0511 ns | 0.0107 |     112 B |
+| SortedSquares      | 2 elements         |     4.649 ns |  0.0467 ns |  0.0437 ns | 0.0031 |      32 B |
+| SortedSquares_Linq | 2 elements         |    23.918 ns |  0.0462 ns |  0.0433 ns | 0.0107 |     112 B |
+| SortedSquares      | High number        | 1,473.894 ns |  4.7148 ns |  3.9370 ns | 0.7668 |    8024 B |
+| SortedSquares_Linq | High number        | 6,935.957 ns | 82.7703 ns | 77.4234 ns | 0.7706 |    8104 B |
+| SortedSquares      | Identical elements |    37.322 ns |  0.1084 ns |  0.0905 ns | 0.0214 |     224 B |
+| SortedSquares_Linq | Identical elements |   109.808 ns |  0.3945 ns |  0.3080 ns | 0.0290 |     304 B |
+| SortedSquares      | Low variance       |    45.430 ns |  0.1797 ns |  0.1681 ns | 0.0214 |     224 B |
+| SortedSquares_Linq | Low variance       |   150.069 ns |  0.5738 ns |  0.5087 ns | 0.0288 |     304 B |
+| SortedSquares      | Negative elements  |    39.248 ns |  0.1403 ns |  0.1243 ns | 0.0214 |     224 B |
+| SortedSquares_Linq | Negative elements  |   161.732 ns |  1.2997 ns |  1.0853 ns | 0.0288 |     304 B |
+| SortedSquares      | Positive elements  |    37.645 ns |  0.1670 ns |  0.1304 ns | 0.0214 |     224 B |
+| SortedSquares_Linq | Positive elements  |   108.289 ns |  0.8881 ns |  0.7873 ns | 0.0290 |     304 B |
+| SortedSquares      | Random elements    |    43.613 ns |  0.0975 ns |  0.0814 ns | 0.0214 |     224 B |
+| SortedSquares_Linq | Random elements    |   214.845 ns |  2.4910 ns |  2.2082 ns | 0.0288 |     304 B |
