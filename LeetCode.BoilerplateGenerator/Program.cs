@@ -61,7 +61,7 @@ builder.AppendLine(@"");
 builder.AppendLine(@"        }");
 builder.AppendLine(@"");
 builder.AppendLine(@"        [Test]");
-builder.AppendLine(AddTestCases(question.ExampleTestcaseList, returnType));
+AddTestCases(question.ExampleTestcaseList, returnType, builder);
 builder.AppendLine($"        public void Test({testParams}, {returnType} expected)");
 builder.AppendLine(@"        {");
 builder.AppendLine(AddTestParamConversion(method.Params));
@@ -76,18 +76,21 @@ outputPath = Path.Combine(outputPath, $"{questionId}.cs");
 var result = builder.ToString();
 File.WriteAllText(outputPath, result);
 
-string AddTestCases(List<string> exampleTestcaseList, string returnType)
+void AddTestCases(List<string> exampleTestcaseList, string returnType, StringBuilder builder)
 {
-    var builder = new StringBuilder();
     foreach (var rawTestCase in exampleTestcaseList)
     {
         var split = rawTestCase.Split(Environment.NewLine.ToCharArray());
-        var quoted = split.Select(s => $"\"{s.Trim('"')}\"");
+        int quotesToAppend = 1;
+        if (split.Any(s => s.Contains('"')))
+        {
+            quotesToAppend = 3;
+        }
+        var quotes = new string('"', quotesToAppend);
+        var quoted = split.Select(s => $"{quotes}{s.Trim('"')}{quotes}");
         var commaSeparated = string.Join(", ", quoted);
         builder.AppendLine($"        [TestCase({commaSeparated}, /* TODO: Replace me */ default({returnType}))]");
     }
-
-    return builder.ToString();
 }
 
 string? AddTestParamConversion(List<Param> parameters)
@@ -109,11 +112,15 @@ static string CapitalizeFirstLetter(string input)
 
 static string ConvertType(string input)
 {
+    // TODO: Make it nice, I can't look at it
     return input switch
     {
         "integer" => "int",
         "integer[]" => "int[]",
         "integer[][]" => "int[][]",
+        "character" => "char",
+        "character[]" => "char[]",
+        "character[][]" => "char[][]",
         _ => input,
     };
 }
