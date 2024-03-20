@@ -70,5 +70,10 @@ namespace LeetCode.Scaffoldings
         {
             return ToString(this);
         }
+
+        public override bool Equals(object? obj)
+        {
+            return ToString() == obj.ToString(); // Hack
+        }
     }
 }
