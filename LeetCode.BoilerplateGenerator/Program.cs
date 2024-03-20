@@ -10,6 +10,8 @@ if (args.Length < 1 || args.Length > 2)
     return;
 }
 
+var typeConverter = new TypeConverter();
+
 Array.Resize(ref args, 2); // dirty hack
 
 var outputPath = args[0];
@@ -35,19 +37,22 @@ var question = await client.GetQuestion(slug);
 var method = JsonSerializer.Deserialize<Method>(question.MetaData);
 var methodName = CapitalizeFirstLetter(method.Name);
 
-// TODO: cleanup params
-// Actually, TODO: cleanup this whole procedure,
+// TODO: cleanup this whole procedure,
 // like what is this mess
-var joinedParams = string.Join(", ", method.Params
-    .Select(param => $"{ConvertType(param.Type)} {param.Name}"));
-var testParams = string.Join(", ", method.Params
-    .Select(param => $"string raw{CapitalizeFirstLetter(param.Name)}"));
+
+var arguments = method.Params.Select(param => new Argument()
+{
+    Type = typeConverter.Convert(param.Type),
+    Name = param.Name
+}).ToArray();
+
 var paramValues = string.Join(", ", method.Params
     .Select(param => param.Name));
-var returnType = ConvertType(method.Return.Type);
+var returnType = typeConverter.Convert(method.Return.Type);
 
 var builder = new StringBuilder();
 builder.AppendLine(@"using System.Text.Json;");
+builder.AppendLine(@"using LeetCode.Scaffoldings;");
 builder.AppendLine(@"using NUnit.Framework;");
 builder.AppendLine(@"");
 builder.AppendLine(@"namespace LeetCode");
@@ -55,16 +60,16 @@ builder.AppendLine(@"{");
 builder.AppendLine($"    // https://leetcode.com/problems/{slug}/");
 builder.AppendLine($"    public class _{question.QuestionFrontendId}");
 builder.AppendLine(@"    {");
-builder.AppendLine($"        public {returnType} {methodName}({joinedParams})");
+BuildMethodDefinition(builder, "public", returnType, methodName, arguments);
 builder.AppendLine(@"        {");
 builder.AppendLine(@"");
 builder.AppendLine(@"        }");
 builder.AppendLine(@"");
 builder.AppendLine(@"        [Test]");
-AddTestCases(question.ExampleTestcaseList, returnType, builder);
-builder.AppendLine($"        public void Test({testParams}, {returnType} expected)");
+AddTestCases(builder, question.ExampleTestcaseList, arguments);
+BuildTestMethodDefinition(builder, arguments, returnType);
 builder.AppendLine(@"        {");
-builder.AppendLine(AddTestParamConversion(method.Params));
+AddTestParamConversion(builder, arguments);
 builder.AppendLine($"            var result = {methodName}({paramValues});");
 builder.AppendLine(@"");
 builder.AppendLine(@"            Assert.That(result, Is.EqualTo(expected));");
@@ -76,33 +81,57 @@ outputPath = Path.Combine(outputPath, $"{questionId}.cs");
 var result = builder.ToString();
 File.WriteAllText(outputPath, result);
 
-void AddTestCases(List<string> exampleTestcaseList, string returnType, StringBuilder builder)
+void AddTestCases(StringBuilder builder, List<string> exampleTestcaseList, Argument[] arguments)
 {
-    foreach (var rawTestCase in exampleTestcaseList)
+    for (int i = 0; i < exampleTestcaseList.Count; i++)
     {
+        var rawTestCase = exampleTestcaseList[i];
+
+        builder.Append(' ', 8);
+        builder.Append("[TestCase(");
+
         var split = rawTestCase.Split(Environment.NewLine.ToCharArray());
-        int quotesToAppend = 1;
-        if (split.Any(s => s.Contains('"')))
+        for (int j = 0; j < split.Length; j++)
         {
-            quotesToAppend = 3;
+            var argument = arguments[j];
+            var value = split[j];
+
+            var wrappedValue = typeConverter.ConvertValue(argument.Type, value);
+            builder.Append($"{wrappedValue}, ");
         }
-        var quotes = new string('"', quotesToAppend);
-        var quoted = split.Select(s => $"{quotes}{s.Trim('"')}{quotes}");
-        var commaSeparated = string.Join(", ", quoted);
-        builder.AppendLine($"        [TestCase({commaSeparated}, /* TODO: Replace me */ default({returnType}))]");
+
+        builder.AppendLine("/* TODO: Replace me */ \"\")]");
     }
 }
 
-string? AddTestParamConversion(List<Param> parameters)
+void AddTestParamConversion(StringBuilder builder, IEnumerable<Argument> arguments)
 {
-    var builder = new StringBuilder();
-
-    foreach (var param in parameters)
+    foreach (var argument in arguments)
     {
-        builder.AppendLine($"            var {param.Name} = JsonSerializer.Deserialize<{ConvertType(param.Type)}>(raw{CapitalizeFirstLetter(param.Name)})!;");
+        if (typeConverter.IsBasicType(argument.Type))
+        {
+            continue;
+        }
+
+        var paramName = argument.Name;
+        var capitalizedParamName = CapitalizeFirstLetter(paramName);
+
+        builder.Append(' ', 12); // Hardcoded for the time being
+        builder.Append($"var {paramName} ");
+        builder.Append('=');
+
+        if (argument.Type == "ListNode")
+        {
+            builder.AppendLine($" ListNode.FromString(raw{capitalizedParamName});");
+        }
+        else
+        {
+            builder.Append($" JsonSerializer.Deserialize<{argument.Type}>");
+            builder.AppendLine($"(raw{capitalizedParamName})!;");
+        }
     }
 
-    return builder.ToString();
+    builder.AppendLine();
 }
 
 static string CapitalizeFirstLetter(string input)
@@ -110,17 +139,69 @@ static string CapitalizeFirstLetter(string input)
     return string.Concat(input[0].ToString().ToUpper(), input.AsSpan(1));
 }
 
-static string ConvertType(string input)
+void BuildMethodDefinition(
+    StringBuilder builder,
+    string access,
+    string returnType,
+    string methodName,
+    IEnumerable<Argument> parameters)
 {
-    // TODO: Make it nice, I can't look at it
-    return input switch
+    var stringParameters = parameters.Select(param => $"{param.Type} {param.Name}");
+    var joinedParams = string.Join(", ", stringParameters);
+
+    builder.Append(' ', 8); // Hardcoded for the time being
+
+    builder.Append(access);
+    builder.Append(' ');
+    builder.Append(returnType);
+    builder.Append(' ');
+    builder.Append(methodName);
+    builder.Append('(');
+    builder.Append(joinedParams);
+    builder.Append(')');
+
+    builder.AppendLine();
+}
+
+void BuildTestMethodDefinition(StringBuilder builder, IEnumerable<Argument> arguments, string returnType)
+{
+    var convertedArguments = new List<Argument>();
+    foreach (var argument in arguments)
     {
-        "integer" => "int",
-        "integer[]" => "int[]",
-        "integer[][]" => "int[][]",
-        "character" => "char",
-        "character[]" => "char[]",
-        "character[][]" => "char[][]",
-        _ => input,
-    };
+        Argument converted;
+        if (typeConverter.IsBasicType(argument.Type))
+        {
+            converted = argument;
+        }
+        else
+        {
+            converted = new Argument()
+            {
+                Type = "string",
+                Name = $"raw{CapitalizeFirstLetter(argument.Name)}",
+            };
+        }
+
+        convertedArguments.Add(converted);
+    }
+
+    if (!typeConverter.IsBasicType(returnType))
+    {
+        returnType = "string";
+    }
+
+    convertedArguments.Add(new Argument()
+    {
+        Type = returnType,
+        Name = "expected",
+    });
+
+    BuildMethodDefinition(builder, "public", "void", "Test", convertedArguments);
+}
+
+readonly struct Argument()
+{
+    public required string Type { get; init; }
+
+    public required string Name { get; init; }
 }
