@@ -6,6 +6,7 @@
         {
             { "integer", "int" },
             { "character", "char" },
+            { "boolean", "bool" },
         };
         private static readonly HashSet<string> BasicTypes = new HashSet<string>(Types.Values);
 
