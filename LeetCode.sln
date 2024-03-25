@@ -14,6 +14,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeetCode.Benchmarks", "Leet
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeetCode.BoilerplateGenerator", "LeetCode.BoilerplateGenerator\LeetCode.BoilerplateGenerator.csproj", "{9CBBE889-A7B8-4B24-8309-186A8EA2EA07}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeetCode.BoilerplateGenerator.Tests", "tests\LeetCode.BoilerplateGenerator.Tests\LeetCode.BoilerplateGenerator.Tests.csproj", "{8B07CC22-EBD2-4C98-BC78-C384A858DAD9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{597DE3FD-2101-4EA0-B680-4A34B24CCABD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,9 +36,16 @@ Global
 		{9CBBE889-A7B8-4B24-8309-186A8EA2EA07}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9CBBE889-A7B8-4B24-8309-186A8EA2EA07}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9CBBE889-A7B8-4B24-8309-186A8EA2EA07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B07CC22-EBD2-4C98-BC78-C384A858DAD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B07CC22-EBD2-4C98-BC78-C384A858DAD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B07CC22-EBD2-4C98-BC78-C384A858DAD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B07CC22-EBD2-4C98-BC78-C384A858DAD9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8B07CC22-EBD2-4C98-BC78-C384A858DAD9} = {597DE3FD-2101-4EA0-B680-4A34B24CCABD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8E92BD7F-7BC6-4E59-8AFF-E29E02F255A0}

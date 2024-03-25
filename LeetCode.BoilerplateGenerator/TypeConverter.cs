@@ -1,25 +1,62 @@
 ﻿namespace LeetCode.BoilerplateGenerator
 {
-    internal class TypeConverter
+    public class TypeConverter
     {
         private static readonly Dictionary<string, string> Types = new Dictionary<string, string>()
         {
             { "integer", "int" },
             { "character", "char" },
             { "boolean", "bool" },
+            { "list", "IList" },
         };
         private static readonly HashSet<string> BasicTypes = new HashSet<string>(Types.Values);
 
         public string Convert(string type)
         {
-            type = SplitArrayType(type, out var braces);
+            // Doesn't handle the combinations atm
+            // List<int[]> won't compute
 
-            if (Types.TryGetValue(type, out var converted))
+            string result;
+            if (IsArray(type))
             {
-                type = converted;
-            }
+                result = SplitArrayType(type, out var braces);
 
-            return $"{type}{braces}";
+                if (Types.TryGetValue(result, out var converted))
+                {
+                    result = converted;
+                }
+
+                return $"{result}{braces}";
+            }
+            else if (IsGeneric(type))
+            {
+                result = ExtractGenerics(type, out var baseType);
+
+                if (Types.TryGetValue(result, out var converted))
+                {
+                    result = converted;
+                }
+
+                if (Types.TryGetValue(baseType, out var convertedBase))
+                {
+                    baseType = convertedBase;
+                }
+
+                return $"{baseType}<{result}>";
+            }
+            else
+            {
+                if (Types.TryGetValue(type, out var converted))
+                {
+                    result = converted;
+                }
+                else
+                {
+                    result = type;
+                }
+
+                return result;
+            }
         }
 
         public string ConvertValue(string type, string value)
@@ -47,6 +84,30 @@
         public bool IsBasicType(string type)
         {
             return BasicTypes.Contains(type);
+        }
+
+        private bool IsGeneric(string type)
+        {
+            return type.IndexOf('<') != -1;
+        }
+
+        private bool IsArray(string type)
+        {
+            return type.IndexOf('[') != -1;
+        }
+
+        private string ExtractGenerics(string type, out string baseType)
+        {
+            var genericIndex = type.IndexOf('<');
+
+            if (genericIndex == -1)
+            {
+                baseType = string.Empty;
+                return type;
+            }
+
+            baseType = type.Substring(0, genericIndex);
+            return type.Substring(genericIndex + 1, type.Length - genericIndex - 2);
         }
 
         private string SplitArrayType(string type, out string braces)

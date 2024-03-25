@@ -27,14 +27,26 @@ var client = new LeetCodeClient();
 string slug;
 if (questionId == -1)
 {
+    Console.WriteLine("Fetching the daily problem");
     (questionId, slug) = await client.GetDaily();
 }
 else
 {
+    Console.WriteLine($"Fetching the problem '{questionId}'");
     slug = await client.GetSlugById(questionId);
 }
 var question = await client.GetQuestion(slug);
+
 var method = JsonSerializer.Deserialize<Method>(question.MetaData);
+
+var serializeOptions = new JsonSerializerOptions
+{
+    WriteIndented = true,
+    Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping
+};
+Console.WriteLine(JsonSerializer.Serialize(question, serializeOptions));
+Console.WriteLine(JsonSerializer.Serialize(method, serializeOptions));
+
 var methodName = CapitalizeFirstLetter(method.Name);
 
 // TODO: cleanup this whole procedure,
