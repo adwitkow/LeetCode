@@ -54,6 +54,26 @@
 | Insert_Popular   | [] [5,7]             |      15.900 ns |     0.0885 ns |     0.0785 ns |  0.0115 |       - |       - |     120 B |
 | Insert_Editorial | [] [5,7]             |       4.131 ns |     0.0154 ns |     0.0144 ns |  0.0031 |       - |       - |      32 B |
 
+# 442. [Find All Duplicates in an Array](https://leetcode.com/problems/find-all-duplicates-in-an-array/)
+| Method                 | Param             | Mean              | Error           | StdDev            | Gen0      | Gen1      | Gen2     | Allocated |
+|----------------------- |------------------ |------------------:|----------------:|------------------:|----------:|----------:|---------:|----------:|
+| FindDuplicates_Linq    | Few duplicates    | 23,209,591.518 ns | 461,902.6214 ns |   549,862.2134 ns |  968.7500 |  937.5000 | 343.7500 | 7888463 B |
+| FindDuplicates_HashSet | Few duplicates    |  1,508,481.501 ns |  14,756.4314 ns |    13,081.1920 ns |  701.1719 |  671.8750 | 666.0156 | 2852152 B |
+| FindDuplicates_Sort    | Few duplicates    |    794,626.993 ns |  15,229.4852 ns |    15,639.5600 ns |  124.0234 |  124.0234 | 124.0234 |  524706 B |
+| FindDuplicates_Inverts | Few duplicates    |    521,465.326 ns |   8,235.8897 ns |     7,703.8563 ns |  124.0234 |  124.0234 | 124.0234 |  524706 B |
+| FindDuplicates_Linq    | Many duplicates   | 26,241,582.772 ns | 518,827.6842 ns | 1,339,259.9277 ns | 1218.7500 | 1187.5000 | 500.0000 | 9862840 B |
+| FindDuplicates_HashSet | Many duplicates   |  2,349,610.124 ns |  46,328.0385 ns |    77,403.7449 ns |  632.8125 |  609.3750 | 601.5625 | 5093013 B |
+| FindDuplicates_Sort    | Many duplicates   |    746,346.073 ns |   2,388.1816 ns |     2,117.0608 ns |   41.0156 |   41.0156 |  41.0156 |  262510 B |
+| FindDuplicates_Inverts | Many duplicates   |    554,771.221 ns |   3,404.3161 ns |     2,842.7581 ns |  166.0156 |  166.0156 | 166.0156 |  655792 B |
+| FindDuplicates_Linq    | [4,3,2,7,8,2,3,1] |        188.344 ns |       1.8678 ns |         1.6558 ns |    0.0987 |         - |        - |    1032 B |
+| FindDuplicates_HashSet | [4,3,2,7,8,2,3,1] |         71.003 ns |       0.6614 ns |         0.5523 ns |    0.0390 |         - |        - |     408 B |
+| FindDuplicates_Sort    | [4,3,2,7,8,2,3,1] |         21.785 ns |       0.2340 ns |         0.2189 ns |    0.0069 |         - |        - |      72 B |
+| FindDuplicates_Inverts | [4,3,2,7,8,2,3,1] |         22.850 ns |       0.4272 ns |         0.3996 ns |    0.0095 |         - |        - |     100 B |
+| FindDuplicates_Linq    | []                |         49.553 ns |       0.4696 ns |         0.3921 ns |    0.0352 |         - |        - |     368 B |
+| FindDuplicates_HashSet | []                |          5.942 ns |       0.1557 ns |         0.1599 ns |    0.0092 |         - |        - |      96 B |
+| FindDuplicates_Sort    | []                |          3.477 ns |       0.1110 ns |         0.2084 ns |    0.0031 |         - |        - |      32 B |
+| FindDuplicates_Inverts | []                |          3.191 ns |       0.1003 ns |         0.0938 ns |    0.0031 |         - |        - |      32 B |
+
 # 791. [Custom Sort String](https://leetcode.com/problems/custom-sort-string/)
 | Method                                   | Param                | Mean      | Error    | StdDev   | Gen0   | Allocated |
 |----------------------------------------- |--------------------- |----------:|---------:|---------:|-------:|----------:|
