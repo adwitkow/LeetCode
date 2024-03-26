@@ -1,10 +1,10 @@
 ﻿namespace LeetCode.Benchmarks
 {
-    public abstract class BenchmarkTarget
+    public abstract class BenchmarkParam
     {
         public string Name { get; set; } = string.Empty;
 
-        protected BenchmarkTarget(string name)
+        protected BenchmarkParam(string name)
         {
             Name = name;
         }

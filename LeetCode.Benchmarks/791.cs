@@ -3,12 +3,12 @@
 namespace LeetCode.Benchmarks
 {
     [MemoryDiagnoser]
-    public class Benchmark791
+    public class _791
     {
         [ParamsSource(nameof(Params))]
         public (string Order, string Input) Param { get; set; }
 
-        private _791 _sut = default!;
+        private LeetCode._791 _sut = default!;
 
         public IEnumerable<(string Order, string Input)> Params => [("ejvdt", "vtedjq"), ("qcglylonk", "lcykngqlo"), ("smjzvxiumph", "xmuzisjvhpm"), ("rngzbwt", "zwrngtb"), ("uohkbpsf", "shkfpbuo"), ("vwltfxekch", "lhcwvfkext"), ("yxiuqmg", "muygxiq"), ("sjvtdzuf", "vufjdstz"), ("lppvfqbsirwtxjk", "kfxtjilvqrbpps"), ("akbeyp", "epybak")];
 
@@ -16,7 +16,7 @@ namespace LeetCode.Benchmarks
         [GlobalSetup]
         public void Setup()
         {
-            _sut = new _791();
+            _sut = new LeetCode._791();
         }
 
         [Benchmark]

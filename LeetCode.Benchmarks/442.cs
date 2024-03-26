@@ -3,25 +3,25 @@
 namespace LeetCode.Benchmarks
 {
     [MemoryDiagnoser]
-    public class Benchmark442
+    public class _442
     {
         [ParamsSource(nameof(ParamRange))]
-        public Benchmark442Target Param { get; set; }
+        public Param442 Param { get; set; }
 
-        private _442 _sut = default!;
+        private LeetCode._442 _sut = default!;
 
-        public IEnumerable<Benchmark442Target> ParamRange => new[]
+        public IEnumerable<Param442> ParamRange => new[]
         {
-            new Benchmark442Target("[]", Array.Empty<int>()),
-            new Benchmark442Target("[4,3,2,7,8,2,3,1]", [4, 3, 2, 7, 8, 2, 3, 1]),
-            new Benchmark442Target("Many duplicates", GenerateRandomValues(() => Random.Shared.Next(0, 10) < 3)),
-            new Benchmark442Target("Few duplicates", GenerateRandomValues(() => Random.Shared.Next(0, 10) < 8)),
+            new Param442("[]", Array.Empty<int>()),
+            new Param442("[4,3,2,7,8,2,3,1]", [4, 3, 2, 7, 8, 2, 3, 1]),
+            new Param442("Many duplicates", GenerateRandomValues(() => Random.Shared.Next(0, 10) < 3)),
+            new Param442("Few duplicates", GenerateRandomValues(() => Random.Shared.Next(0, 10) < 8)),
         };
 
         [GlobalSetup]
         public void Setup()
         {
-            _sut = new _442();
+            _sut = new LeetCode._442();
         }
 
         [Benchmark]
@@ -78,9 +78,9 @@ namespace LeetCode.Benchmarks
             return values;
         }
 
-        public class Benchmark442Target : BenchmarkTarget
+        public class Param442 : BenchmarkParam
         {
-            public Benchmark442Target(string name, int[] nums)
+            public Param442(string name, int[] nums)
                 : base(name)
             {
                 Nums = nums;

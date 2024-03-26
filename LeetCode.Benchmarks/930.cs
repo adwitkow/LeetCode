@@ -3,12 +3,12 @@
 namespace LeetCode.Benchmarks
 {
     [MemoryDiagnoser]
-    public class Benchmark930
+    public class _930
     {
         [ParamsSource(nameof(Params))]
         public (int[] Nums, int Goal) Param { get; set; }
 
-        private _930 _sut = default!;
+        private LeetCode._930 _sut = default!;
 
         public IEnumerable<(int[] Nums, int Goal)> Params => new[]
         {
@@ -20,7 +20,7 @@ namespace LeetCode.Benchmarks
         [GlobalSetup]
         public void Setup()
         {
-            _sut = new _930();
+            _sut = new LeetCode._930();
         }
 
         [Benchmark]
