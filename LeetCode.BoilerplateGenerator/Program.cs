@@ -118,12 +118,15 @@ void AddTestCases(StringBuilder builder, List<string> exampleTestcaseList, Argum
 
 void AddTestParamConversion(StringBuilder builder, IEnumerable<Argument> arguments)
 {
+    bool didAnyWork = false;
     foreach (var argument in arguments)
     {
         if (typeConverter.IsBasicType(argument.Type))
         {
             continue;
         }
+
+        didAnyWork = true;
 
         var paramName = argument.Name;
         var capitalizedParamName = CapitalizeFirstLetter(paramName);
@@ -143,7 +146,10 @@ void AddTestParamConversion(StringBuilder builder, IEnumerable<Argument> argumen
         }
     }
 
-    builder.AppendLine();
+    if (didAnyWork)
+    {
+        builder.AppendLine();
+    }
 }
 
 static string CapitalizeFirstLetter(string input)

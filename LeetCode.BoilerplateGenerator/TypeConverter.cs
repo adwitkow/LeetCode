@@ -6,6 +6,7 @@
         {
             { "integer", "int" },
             { "character", "char" },
+            { "string", "string" },
             { "boolean", "bool" },
             { "list", "IList" },
         };
@@ -74,8 +75,9 @@
                 {
                     "char" => '\'',
                     "int" => null,
+                    "string" => null, // strings are prewrapped by leetcode
                     _ => '\"',
-                }; ;
+                };
             }
             
             return $"{wrap}{value}{wrap}";
