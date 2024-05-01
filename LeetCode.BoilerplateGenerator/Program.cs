@@ -106,7 +106,7 @@ void AddTestCases(StringBuilder builder, List<string> exampleTestcaseList, Argum
         for (int j = 0; j < split.Length; j++)
         {
             var argument = arguments[j];
-            var value = split[j];
+            var value = split[j].Trim('\"');
 
             var wrappedValue = typeConverter.ConvertValue(argument.Type, value);
             builder.Append($"{wrappedValue}, ");

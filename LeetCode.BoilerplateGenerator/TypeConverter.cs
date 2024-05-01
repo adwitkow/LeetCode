@@ -75,7 +75,7 @@
                 {
                     "char" => '\'',
                     "int" => null,
-                    "string" => null, // strings are prewrapped by leetcode
+                    "string" => '\"',
                     _ => '\"',
                 };
             }
