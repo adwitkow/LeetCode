@@ -127,3 +127,15 @@
 | SortedSquares_Linq | Positive elements  |   108.289 ns |  0.8881 ns |  0.7873 ns | 0.0290 |     304 B |
 | SortedSquares      | Random elements    |    43.613 ns |  0.0975 ns |  0.0814 ns | 0.0214 |     224 B |
 | SortedSquares_Linq | Random elements    |   214.845 ns |  2.4910 ns |  2.2082 ns | 0.0288 |     304 B |
+
+# 2000. [Reverse Prefix of Word](https://leetcode.com/problems/reverse-prefix-of-word/)
+| Method               | Param          | Mean      | Error     | StdDev    | Gen0   | Gen1   | Allocated |
+|--------------------- |--------------- |----------:|----------:|----------:|-------:|-------:|----------:|
+| ReversePrefix_Array  | Same character |  9.516 ns | 0.0330 ns | 0.0275 ns | 0.0053 |      - |      56 B |
+| ReversePrefix_Memory | Same character |  2.919 ns | 0.0240 ns | 0.0225 ns |      - |      - |         - |
+| ReversePrefix_Array  | abcdefd:d      | 11.522 ns | 0.0240 ns | 0.0213 ns | 0.0076 |      - |      80 B |
+| ReversePrefix_Memory | abcdefd:d      |  2.485 ns | 0.0232 ns | 0.0217 ns |      - |      - |         - |
+| ReversePrefix_Array  | long (end)     | 64.764 ns | 0.1704 ns | 0.1511 ns | 0.1010 |      - |    1056 B |
+| ReversePrefix_Memory | long (end)     |  2.445 ns | 0.0147 ns | 0.0130 ns |      - |      - |         - |
+| ReversePrefix_Array  | long (start)   | 49.605 ns | 0.1050 ns | 0.0982 ns | 0.1010 | 0.0001 |    1056 B |
+| ReversePrefix_Memory | long (start)   |  2.798 ns | 0.0105 ns | 0.0093 ns |      - |      - |         - |
