@@ -1,4 +1,4 @@
-# 9. [Palindrome Number](https://leetcode.com/problems/palindrome-number/)
+# 9. [Palindrome Number](https://leetcode.com/problems/palindrome-number/) [[solutions](https://github.com/adwitkow/LeetCode/blob/master/LeetCode/1-9/9.cs)] [[benchmarks](https://github.com/adwitkow/LeetCode/blob/master/LeetCode.Benchmarks/9.cs)]
 | Method                             | Param       | Mean       | Error     | StdDev    | Gen0   | Allocated |
 |----------------------------------- |------------ |-----------:|----------:|----------:|-------:|----------:|
 | IsPalindrome                       | -2147483648 |  0.3274 ns | 0.0094 ns | 0.0083 ns |      - |         - |
@@ -23,7 +23,7 @@
 | IsPalindrome_CharArray_Linq        | 2147483647  | 44.2088 ns | 0.3267 ns | 0.2896 ns | 0.0214 |     224 B |
 | IsPalindrome_CharArray_SingleArray | 2147483647  | 10.2686 ns | 0.0405 ns | 0.0339 ns | 0.0092 |      96 B |
 
-# 57. [Insert Interval](https://leetcode.com/problems/insert-interval/)
+# 57. [Insert Interval](https://leetcode.com/problems/insert-interval/) ([solutions](https://github.com/adwitkow/LeetCode/blob/master/LeetCode/57.cs)) [[benchmarks](https://github.com/adwitkow/LeetCode/blob/master/LeetCode.Benchmarks/57.cs)]
 | Method           | Param                | Mean           | Error         | StdDev        | Gen0    | Gen1    | Gen2    | Allocated |
 |----------------- |--------------------- |---------------:|--------------:|--------------:|--------:|--------:|--------:|----------:|
 | Insert           | High volume          |   9,034.869 ns |    24.0856 ns |    18.8045 ns |  7.6294 |       - |       - |   80032 B |
@@ -54,7 +54,7 @@
 | Insert_Popular   | [] [5,7]             |      15.900 ns |     0.0885 ns |     0.0785 ns |  0.0115 |       - |       - |     120 B |
 | Insert_Editorial | [] [5,7]             |       4.131 ns |     0.0154 ns |     0.0144 ns |  0.0031 |       - |       - |      32 B |
 
-# 442. [Find All Duplicates in an Array](https://leetcode.com/problems/find-all-duplicates-in-an-array/)
+# 442. [Find All Duplicates in an Array](https://leetcode.com/problems/find-all-duplicates-in-an-array/) ([solutions](https://github.com/adwitkow/LeetCode/blob/master/LeetCode/442.cs)) [[benchmarks](https://github.com/adwitkow/LeetCode/blob/master/LeetCode.Benchmarks/442.cs)]
 | Method                 | Param             | Mean              | Error           | StdDev            | Gen0      | Gen1      | Gen2     | Allocated |
 |----------------------- |------------------ |------------------:|----------------:|------------------:|----------:|----------:|---------:|----------:|
 | FindDuplicates_Linq    | Few duplicates    | 23,209,591.518 ns | 461,902.6214 ns |   549,862.2134 ns |  968.7500 |  937.5000 | 343.7500 | 7888463 B |
@@ -74,7 +74,7 @@
 | FindDuplicates_Sort    | []                |          3.477 ns |       0.1110 ns |         0.2084 ns |    0.0031 |         - |        - |      32 B |
 | FindDuplicates_Inverts | []                |          3.191 ns |       0.1003 ns |         0.0938 ns |    0.0031 |         - |        - |      32 B |
 
-# 791. [Custom Sort String](https://leetcode.com/problems/custom-sort-string/)
+# 791. [Custom Sort String](https://leetcode.com/problems/custom-sort-string/) ([solutions](https://github.com/adwitkow/LeetCode/blob/master/LeetCode/791.cs)) [[benchmarks](https://github.com/adwitkow/LeetCode/blob/master/LeetCode.Benchmarks/791.cs)]
 | Method                                   | Param                | Mean      | Error    | StdDev   | Gen0   | Allocated |
 |----------------------------------------- |--------------------- |----------:|---------:|---------:|-------:|----------:|
 | CustomSortString                         | (akbeyp, epybak)     | 165.82 ns | 1.545 ns | 1.718 ns | 0.0443 |     464 B |
@@ -108,7 +108,7 @@
 | CustomSortString_BruteSorter             | (yxiuqmg, muygxiq)   | 116.54 ns | 0.235 ns | 0.208 ns | 0.0076 |      80 B |
 | CustomSortString_BruteSorter_MappedOrder | (yxiuqmg, muygxiq)   | 149.28 ns | 0.980 ns | 0.818 ns | 0.0443 |     464 B |
 
-# 977. [Squares of a Sorted Array](https://leetcode.com/problems/squares-of-a-sorted-array/)
+# 977. [Squares of a Sorted Array](https://leetcode.com/problems/squares-of-a-sorted-array/) ([solutions](https://github.com/adwitkow/LeetCode/blob/master/LeetCode/977.cs)) [[benchmarks](https://github.com/adwitkow/LeetCode/blob/master/LeetCode.Benchmarks/977.cs)]
 | Method             | Param              | Mean         | Error      | StdDev     | Gen0   | Allocated |
 |------------------- |------------------- |-------------:|-----------:|-----------:|-------:|----------:|
 | SortedSquares      | 1 element          |     3.716 ns |  0.0188 ns |  0.0167 ns | 0.0031 |      32 B |
@@ -128,7 +128,7 @@
 | SortedSquares      | Random elements    |    43.613 ns |  0.0975 ns |  0.0814 ns | 0.0214 |     224 B |
 | SortedSquares_Linq | Random elements    |   214.845 ns |  2.4910 ns |  2.2082 ns | 0.0288 |     304 B |
 
-# 2000. [Reverse Prefix of Word](https://leetcode.com/problems/reverse-prefix-of-word/)
+# 2000. [Reverse Prefix of Word](https://leetcode.com/problems/reverse-prefix-of-word/) ([solutions](https://github.com/adwitkow/LeetCode/blob/master/LeetCode/2000.cs)) [[benchmarks](https://github.com/adwitkow/LeetCode/blob/master/LeetCode.Benchmarks/2000.cs)]
 | Method               | Param          | Mean      | Error     | StdDev    | Gen0   | Gen1   | Allocated |
 |--------------------- |--------------- |----------:|----------:|----------:|-------:|-------:|----------:|
 | ReversePrefix_Array  | Same character |  9.516 ns | 0.0330 ns | 0.0275 ns | 0.0053 |      - |      56 B |
