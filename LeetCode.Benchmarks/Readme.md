@@ -74,6 +74,25 @@
 | FindDuplicates_Sort    | []                |          3.477 ns |       0.1110 ns |         0.2084 ns |    0.0031 |         - |        - |      32 B |
 | FindDuplicates_Inverts | []                |          3.191 ns |       0.1003 ns |         0.0938 ns |    0.0031 |         - |        - |      32 B |
 
+# 506. [Relative Ranks](https://leetcode.com/problems/relative-ranks/) [[solutions](https://github.com/adwitkow/LeetCode/blob/master/LeetCode/506.cs)] [[benchmarks](https://github.com/adwitkow/LeetCode/blob/master/LeetCode.Benchmarks/506.cs)]
+| Method                              | Param | Mean            | Error        | StdDev       | Gen0     | Gen1     | Gen2     | Allocated |
+|------------------------------------ |------ |----------------:|-------------:|-------------:|---------:|---------:|---------:|----------:|
+| FindRelativeRanks_Linq              | 1     |       209.43 ns |     1.018 ns |     0.795 ns |   0.1154 |        - |        - |    1208 B |
+| FindRelativeRanks_Array_IndexOf     | 1     |        14.58 ns |     0.032 ns |     0.028 ns |   0.0061 |        - |        - |      64 B |
+| FindRelativeRanks_Span_BinarySearch | 1     |        15.54 ns |     0.026 ns |     0.024 ns |   0.0084 |        - |        - |      88 B |
+| FindRelativeRanks_Linq              | 10    |       715.83 ns |     2.280 ns |     2.133 ns |   0.2165 |        - |        - |    2272 B |
+| FindRelativeRanks_Array_IndexOf     | 10    |        68.08 ns |     0.596 ns |     0.498 ns |   0.0160 |        - |        - |     168 B |
+| FindRelativeRanks_Span_BinarySearch | 10    |       109.91 ns |     0.648 ns |     0.541 ns |   0.0244 |        - |        - |     256 B |
+| FindRelativeRanks_Linq              | 100   |     6,647.28 ns |    12.022 ns |    11.246 ns |   1.0147 |   0.0076 |        - |   10680 B |
+| FindRelativeRanks_Array_IndexOf     | 100   |       812.59 ns |     8.077 ns |     7.555 ns |   0.1192 |        - |        - |    1248 B |
+| FindRelativeRanks_Span_BinarySearch | 100   |     1,825.93 ns |     5.472 ns |     5.119 ns |   0.1259 |        - |        - |    1336 B |
+| FindRelativeRanks_Linq              | 1000  |   123,496.68 ns |   483.579 ns |   377.547 ns |  10.0098 |   1.4648 |        - |  105346 B |
+| FindRelativeRanks_Array_IndexOf     | 1000  |    53,173.14 ns |   191.236 ns |   178.882 ns |   3.2959 |   0.3662 |        - |   34480 B |
+| FindRelativeRanks_Span_BinarySearch | 1000  |    57,829.72 ns |    99.745 ns |    93.301 ns |   3.2959 |   0.3052 |        - |   34568 B |
+| FindRelativeRanks_Linq              | 10000 | 2,031,001.20 ns | 8,994.099 ns | 7,510.480 ns | 191.4063 | 183.5938 | 101.5625 | 1369125 B |
+| FindRelativeRanks_Array_IndexOf     | 10000 | 2,540,807.03 ns | 3,787.733 ns | 3,543.047 ns |  39.0625 |  23.4375 |        - |  430482 B |
+| FindRelativeRanks_Span_BinarySearch | 10000 | 1,110,449.35 ns | 2,749.974 ns | 2,296.353 ns |  41.0156 |  25.3906 |        - |  430569 B |
+
 # 791. [Custom Sort String](https://leetcode.com/problems/custom-sort-string/) ([solutions](https://github.com/adwitkow/LeetCode/blob/master/LeetCode/791.cs)) [[benchmarks](https://github.com/adwitkow/LeetCode/blob/master/LeetCode.Benchmarks/791.cs)]
 | Method                                   | Param                | Mean      | Error    | StdDev   | Gen0   | Allocated |
 |----------------------------------------- |--------------------- |----------:|---------:|---------:|-------:|----------:|
