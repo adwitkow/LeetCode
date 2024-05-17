@@ -135,9 +135,9 @@ void AddTestParamConversion(StringBuilder builder, IEnumerable<Argument> argumen
         builder.Append($"var {paramName} ");
         builder.Append('=');
 
-        if (argument.Type == "ListNode")
+        if (argument.Type is "ListNode" or "TreeNode")
         {
-            builder.AppendLine($" ListNode.FromString(raw{capitalizedParamName});");
+            builder.AppendLine($" {argument.Type}.FromString(raw{capitalizedParamName});");
         }
         else
         {
