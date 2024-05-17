@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using System.Text;
+using System.Text.Json;
 
 namespace LeetCode.Scaffoldings
 {
@@ -24,7 +25,43 @@ namespace LeetCode.Scaffoldings
 
         public static string ToString(TreeNode? treeNode)
         {
-            throw new NotImplementedException(); // TODO
+            var values = new List<int?>();
+
+            var queue = new Queue<TreeNode?>();
+            queue.Enqueue(treeNode);
+
+            while (queue.Count > 0)
+            {
+                var node = queue.Dequeue();
+
+                if (node is null)
+                {
+                    values.Add(null);
+                }
+                else
+                {
+                    values.Add(node.val);
+
+                    queue.Enqueue(node.left);
+                    queue.Enqueue(node.right);
+                }
+            }
+
+            // Trim null values at the end
+            for (int i = values.Count - 1; i >= 0; i--)
+            {
+                if (values[i] is not null)
+                {
+                    break;
+                }
+
+                values.RemoveAt(i);
+            }
+
+            var valuesAsStrings = values.Select(v => v is null ? "null" : v.ToString());
+            var commaSeparated = string.Join(',', valuesAsStrings);
+
+            return $"[{commaSeparated}]";
         }
 
         public static TreeNode FromString(string input)
