@@ -83,22 +83,28 @@ namespace LeetCode.Scaffoldings
             {
                 var currentNode = queue.Dequeue();
 
-                var number = numbers[index];
-                if (index < numbers.Length && number is not null)
+                if (index < numbers.Length)
                 {
-                    var child = new TreeNode(number.Value);
-                    currentNode.left = child;
-                    queue.Enqueue(child);
+                    var number = numbers[index];
+                    if (number is not null)
+                    {
+                        var child = new TreeNode(number.Value);
+                        currentNode.left = child;
+                        queue.Enqueue(child);
+                    }
                 }
 
                 index++;
 
-                number = numbers[index];
-                if (index < numbers.Length && number is not null)
+                if (index < numbers.Length)
                 {
-                    var child = new TreeNode(number.Value);
-                    currentNode.right = child;
-                    queue.Enqueue(child);
+                    var number = numbers[index];
+                    if (number is not null)
+                    {
+                        var child = new TreeNode(number.Value);
+                        currentNode.right = child;
+                        queue.Enqueue(child);
+                    }
                 }
 
                 index++;
