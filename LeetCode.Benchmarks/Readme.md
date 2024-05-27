@@ -147,6 +147,25 @@
 | SortedSquares      | Random elements    |    43.613 ns |  0.0975 ns |  0.0814 ns | 0.0214 |     224 B |
 | SortedSquares_Linq | Random elements    |   214.845 ns |  2.4910 ns |  2.2082 ns | 0.0288 |     304 B |
 
+# 1608. [Special Array With X Elements Greater Than or Equal X](https://leetcode.com/problems/special-array-with-x-elements-greater-than-or-equal-x) [[solutions](https://github.com/adwitkow/LeetCode/blob/master/LeetCode/1000-1999/1608.cs)] [[benchmarks](https://github.com/adwitkow/LeetCode/blob/master/LeetCode.Benchmarks/1608.cs)]
+| Method             | Param        | Mean        | Error     | StdDev    | Ratio | RatioSD | Gen0   | Allocated | Alloc Ratio |
+|------------------- |------------- |------------:|----------:|----------:|------:|--------:|-------:|----------:|------------:|
+| Array_BinarySearch | 1 elements   |   1.1606 ns | 0.0035 ns | 0.0030 ns |  0.41 |    0.00 |      - |         - |        0.00 |
+| Span_BinarySearch  | 1 elements   |   0.9467 ns | 0.0022 ns | 0.0017 ns |  0.34 |    0.00 |      - |         - |        0.00 |
+| CountingSort       | 1 elements   |   2.8167 ns | 0.0084 ns | 0.0079 ns |  1.00 |    0.00 | 0.0031 |      32 B |        1.00 |
+|                    |              |             |           |           |       |         |        |           |             |
+| Array_BinarySearch | 10 elements  |  22.9706 ns | 0.0470 ns | 0.0392 ns |  1.95 |    0.00 |      - |         - |        0.00 |
+| Span_BinarySearch  | 10 elements  |  32.4950 ns | 0.0701 ns | 0.0656 ns |  2.75 |    0.00 |      - |         - |        0.00 |
+| CountingSort       | 10 elements  |  11.7977 ns | 0.0165 ns | 0.0138 ns |  1.00 |    0.00 | 0.0069 |      72 B |        1.00 |
+|                    |              |             |           |           |       |         |        |           |             |
+| Array_BinarySearch | 100 elements | 595.2857 ns | 2.7368 ns | 2.4261 ns |  4.17 |    0.02 |      - |         - |        0.00 |
+| Span_BinarySearch  | 100 elements | 636.7593 ns | 3.2562 ns | 3.0459 ns |  4.46 |    0.02 |      - |         - |        0.00 |
+| CountingSort       | 100 elements | 142.6519 ns | 0.2538 ns | 0.2120 ns |  1.00 |    0.00 | 0.0412 |     432 B |        1.00 |
+|                    |              |             |           |           |       |         |        |           |             |
+| Array_BinarySearch | 50 elements  | 226.3413 ns | 0.5109 ns | 0.4779 ns |  3.26 |    0.01 |      - |         - |        0.00 |
+| Span_BinarySearch  | 50 elements  | 236.3158 ns | 0.4801 ns | 0.4009 ns |  3.40 |    0.01 |      - |         - |        0.00 |
+| CountingSort       | 50 elements  |  69.3982 ns | 0.1556 ns | 0.1379 ns |  1.00 |    0.00 | 0.0222 |     232 B |        1.00 |
+
 # 2000. [Reverse Prefix of Word](https://leetcode.com/problems/reverse-prefix-of-word/) ([solutions](https://github.com/adwitkow/LeetCode/blob/master/LeetCode/2000.cs)) [[benchmarks](https://github.com/adwitkow/LeetCode/blob/master/LeetCode.Benchmarks/2000.cs)]
 | Method               | Param          | Mean      | Error     | StdDev    | Gen0   | Gen1   | Allocated |
 |--------------------- |--------------- |----------:|----------:|----------:|-------:|-------:|----------:|
